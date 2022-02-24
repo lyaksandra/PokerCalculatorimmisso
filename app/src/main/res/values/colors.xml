@@ -11,4 +11,5 @@
 <!--    table color-->
     <color name="poker_table">#22763d</color>
     <color name="first_buttons">#bd4337</color>
+    <color name="halfWhite">#0FFFFFFF</color>
 </resources>

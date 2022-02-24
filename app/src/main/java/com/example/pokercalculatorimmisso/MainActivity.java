@@ -9,27 +9,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pokercalculatorimmisso.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        myMainContainer = findViewById(R.id.main_container);
-        my9PlayersButton = findViewById(R.id.button_nine_players);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Button my4PlayersButton;
-        my4PlayersButton = findViewById(R.id.button_four_players);
-        my4PlayersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent fourPlay = new Intent(MainActivity.this,FourPlayActivity.class);
-                startActivity(fourPlay);
-            }
+
+        binding.buttonFourPlayers.setOnClickListener(v -> {
+            Intent fourPlay = new Intent(MainActivity.this, FourPlayActivity.class);
+            startActivity(fourPlay);
         });
     }
-
-
-    ConstraintLayout myMainContainer;
-    Button my9PlayersButton;
 }

@@ -4,28 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FourPlayActivity"
-    android:orientation="vertical"
-    android:background="@drawable/poker_table">
+    android:background="@drawable/poker_table"
+    tools:context=".FourPlayActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="4">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/select_card"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:backgroundTint="#00000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <FrameLayout
-            android:id="@+id/one"
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/emty_card" />
+    </androidx.cardview.widget.CardView>
 
-        <FrameLayout
-            android:id="@+id/two"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/center_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_card" />
 
 
-    </LinearLayout>
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:weightSum="4">-->
+
+    <!--        <FrameLayout-->
+    <!--            android:id="@+id/one"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_weight="3" />-->
+
+    <!--        <FrameLayout-->
+    <!--            android:id="@+id/two"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_weight="1" />-->
+
+
+    <!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

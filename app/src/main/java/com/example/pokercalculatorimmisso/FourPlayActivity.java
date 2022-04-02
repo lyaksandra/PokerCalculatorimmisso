@@ -30,7 +30,7 @@ public class FourPlayActivity extends AppCompatActivity {
         binding.centerList.setAdapter(adapter);
 
 
-        binding.selectCard.setOnClickListener(view -> {
+        binding.selectCardClub.setOnClickListener(view -> {
             showBottomDialog();
         });
     }

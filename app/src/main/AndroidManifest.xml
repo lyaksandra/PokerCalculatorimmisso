@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokerCalculatorimmisso">
         <activity
-            android:name=".GridLayoutManager"
-            android:exported="false" />
-        <activity
             android:name=".FourPlayActivity"
             android:screenOrientation="landscape"
             android:exported="false" />

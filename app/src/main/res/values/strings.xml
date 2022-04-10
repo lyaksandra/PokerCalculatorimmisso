@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Poker Calculator (immisso)</string>
-    <string name="four_players">4 players</string>
+    <string name="four_players">5 players</string>
     <string name="nine_players">9 players</string>
     <string name="title_activity_nine_play">NinePlayActivity</string>
     <!-- Strings used for fragments for navigation -->

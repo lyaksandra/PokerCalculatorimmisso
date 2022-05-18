@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/table_five_best"
+    android:background="@drawable/table_exactly_five"
     tools:context=".FourPlayActivity"
     android:id="@+id/four_play">
 
@@ -12,205 +12,205 @@
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ace_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ace_diamonds"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/king_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/king_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/queen_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/queen_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/jack_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/jack_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ten_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/ten_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/nine_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/nine_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/eight_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/eight_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/seven_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/seven_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/six_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/six_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/five_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/five_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/four_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/four_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/three_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/three_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"/>
+        app:layout_constraintVertical_bias="0.076"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/two_diamonds"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/two_diamonds"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.076"/>
 
 <!--    clubs-->
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ace_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ace_clubs"
         android:visibility="visible"
@@ -218,13 +218,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/king_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/king_clubs"
         android:visibility="gone"
@@ -232,13 +232,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/queen_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/queen_clubs"
         android:visibility="gone"
@@ -246,13 +246,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/jack_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/jack_clubs"
         android:visibility="gone"
@@ -260,13 +260,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ten_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ten_clubs"
         android:visibility="gone"
@@ -274,26 +274,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/nine_clubs"
         android:layout_width="75dp"
         android:layout_height="104dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/nine_clubs"
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/eight_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/eight_clubs"
         android:visibility="gone"
@@ -301,13 +302,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/seven_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/seven_clubs"
         android:visibility="gone"
@@ -315,13 +316,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/six_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/six_clubs"
         android:visibility="gone"
@@ -329,13 +330,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/five_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/five_clubs"
         android:visibility="gone"
@@ -343,13 +344,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/four_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/four_clubs"
         android:visibility="gone"
@@ -357,13 +358,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/three_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/three_clubs"
         android:visibility="gone"
@@ -371,13 +372,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/two_clubs"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/two_clubs"
         android:visibility="gone"
@@ -385,15 +386,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.428"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.421"/>
 
 <!--    spades-->
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ace_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ace_spades"
         android:visibility="visible"
@@ -401,13 +402,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/king_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/king_spades"
         android:visibility="gone"
@@ -415,13 +416,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/queen_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/queen_spades"
         android:visibility="gone"
@@ -429,13 +430,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/jack_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/jack_spades"
         android:visibility="gone"
@@ -448,8 +449,8 @@
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ten_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ten_spades"
         android:visibility="gone"
@@ -457,13 +458,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/nine_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/nine_spades"
         android:visibility="gone"
@@ -471,8 +472,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/eight_spades"
@@ -485,13 +486,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/seven_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/seven_spades"
         android:visibility="gone"
@@ -499,13 +500,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/six_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/six_spades"
         android:visibility="gone"
@@ -513,13 +514,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/five_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/five_spades"
         android:visibility="gone"
@@ -527,13 +528,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/four_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/four_spades"
         android:visibility="gone"
@@ -541,13 +542,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/three_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/three_spades"
         android:visibility="gone"
@@ -555,13 +556,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/two_spades"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/two_spades"
         android:visibility="gone"
@@ -569,15 +570,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.565"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.55"/>
 
 <!--    hearts-->
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ace_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ace_hearts"
         android:visibility="visible"
@@ -585,13 +586,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/king_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/king_hearts"
         android:visibility="gone"
@@ -599,13 +600,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/queen_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/queen_hearts"
         android:visibility="gone"
@@ -613,13 +614,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/jack_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/jack_hearts"
         android:visibility="gone"
@@ -627,13 +628,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/ten_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ten_hearts"
         android:visibility="gone"
@@ -641,13 +642,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/nine_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/nine_hearts"
         android:visibility="gone"
@@ -655,13 +656,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/eight_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/eight_hearts"
         android:visibility="gone"
@@ -669,13 +670,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/seven_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/seven_hearts"
         android:visibility="gone"
@@ -683,13 +684,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/six_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/six_hearts"
         android:visibility="gone"
@@ -697,13 +698,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/five_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/five_hearts"
         android:visibility="gone"
@@ -711,13 +712,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/four_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/four_hearts"
         android:visibility="gone"
@@ -725,13 +726,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/three_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/three_hearts"
         android:visibility="gone"
@@ -739,13 +740,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
     <com.example.pokercalculatorimmisso.MyCardView
         android:id="@+id/two_hearts"
-        android:layout_width="75dp"
-        android:layout_height="104dp"
+        android:layout_width="79dp"
+        android:layout_height="102dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/two_hearts"
         android:visibility="gone"
@@ -753,8 +754,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.08"
-        app:layout_constraintHorizontal_bias="0.6984"/>
+        app:layout_constraintVertical_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.681"/>
 
 
     <!--    <androidx.recyclerview.widget.RecyclerView-->

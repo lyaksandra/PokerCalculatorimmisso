@@ -91,8 +91,10 @@ public class FourPlayActivity extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent event) { // метод, который обрабатывает нажатие на объект
 
-                int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши тут был final
-                int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши тут был final
+                //final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
+                //final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
+                final int x = (int) event.getX();
+                final int y = (int) event.getY();
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) { // рассматриваем три случая, которые необходимы для передвижения объекта (кнопка нажата -- движение -- кнопка отжата)
 

@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.pokercalculatorimmisso.adapter.CardAdapter;
-import com.example.pokercalculatorimmisso.databinding.ActivityFourPlayBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class FourPlayActivity extends Activity {
@@ -20,14 +20,15 @@ public class FourPlayActivity extends Activity {
     ObjectAnimator animation;
     MyCardView aceClubs;
 
-    ActivityFourPlayBinding binding;
+    //ActivityFourPlayBinding binding;
     CardAdapter adapter;
     BottomSheetDialog dialog;
     int dpiPixel5 = 440; // dpi моего эмулятора
 
     private ViewGroup mainLayout;
 
-    private boolean suitable = false; // переменная флаг
+    private boolean suitable = false; // переменная флаг для контроля нахождения карты в месте под карту
+    private boolean isMove = false; //еще одна переменная флаг для движения
     int number; // номер места под карту из массива, чтобы запоминать i из цикла
     private int xDelta;
     private int yDelta;
@@ -90,8 +91,8 @@ public class FourPlayActivity extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent event) { // метод, который обрабатывает нажатие на объект
 
-                final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
-                final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
+                int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши тут был final
+                int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши тут был final
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) { // рассматриваем три случая, которые необходимы для передвижения объекта (кнопка нажата -- движение -- кнопка отжата)
 
@@ -99,15 +100,20 @@ public class FourPlayActivity extends Activity {
                         ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams) // создаю слой, по координатам которого будет двигаться объект
                                 view.getLayoutParams();
 
-                        if (view.getVisibility() == View.VISIBLE ) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
+                        //Toast.makeText(FourPlayActivity.this,  "куку", Toast.LENGTH_SHORT).show();
+
+                        if ((view.getVisibility() == View.VISIBLE )&& (isMove = false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
                             xDelta = x - lParams.leftMargin; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
                             yDelta = y - lParams.topMargin; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
                             xBegin = lParams.leftMargin; // здесь мы запоминаем координату Х, когда мышка нажимает на объект
                             yBegin = lParams.topMargin; // здесь мы запоминаем координату У, когда мышка нажимает на объект
+                            isMove = true;
                         }
+
                         break;
 
                     case MotionEvent.ACTION_UP: // случай, когда кнопка мыши ОТЖАТА
+                        isMove = false;
                         suitable = false; // обозначаем переменную флаг ложью, чтобы далее использовать ее значение (тру или фолз)
                         for (int i = 0; i <= 18; i++) {
 
@@ -147,6 +153,15 @@ public class FourPlayActivity extends Activity {
                             layoutParams.rightMargin = 0;
                             layoutParams.bottomMargin = 0;
                             view.setLayoutParams(layoutParams);
+
+                            String string0 = "" + x;
+                            String string1 = "" + y;
+                            String string2 = "" + xDelta;
+                            String string3 = "" + yDelta;
+                            Toast.makeText(FourPlayActivity.this,  "x= " + string0 + "y= " + string1 + "xDel= " + string2 + "yDel= " + string3, Toast.LENGTH_SHORT).show();
+
+//                            Toast.makeText(FourPlayActivity.this,  "y" + y, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(FourPlayActivity.this,   "x" + x, Toast.LENGTH_SHORT).show();
                         }
                         break;
                 }

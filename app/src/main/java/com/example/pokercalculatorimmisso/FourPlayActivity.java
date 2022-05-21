@@ -44,16 +44,20 @@ public class FourPlayActivity extends Activity {
             {41, 41, 63, 63, 63, 63, 41, 41, 365, 365, 365, 365, 365, 717, 717, 707, 702, 702, 702} // координаты y от верхнего края
     };
 
+
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) { // начался жизненный цикл онКриэйт
         super.onCreate(savedInstanceState); // наследование функций и методов онКриэйта
         setContentView(R.layout.activity_four_play); //привязка к XML-файла к активити
         mainLayout = findViewById(R.id.four_play); // вводим новый объект, которая будет отвечать за XML файл массива
+
         MyCardView aceDiamonds = findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceClubs = findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceSpades = findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceHearts = findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+
 
         Path path = new Path(); // создаем объект (путь) типа Path
         path.moveTo(251f, 41f); // и перемещаем его по таким координатам (взяты вторые координаты из массива)
@@ -62,10 +66,10 @@ public class FourPlayActivity extends Activity {
         animation.start(); // запускаем процесс передвиженя по координатам
 
 
-        aceDiamonds.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceClubs.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceSpades.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceHearts.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
+        aceDiamonds.setOnTouchListener(onTouchListener(aceDiamonds)); // привязываем к объекту метод, который ждет, пока на объект не нажмут
+        aceClubs.setOnTouchListener(onTouchListener(aceDiamonds)); // привязываем к объекту метод, который ждет, пока на объект не нажмут
+        aceSpades.setOnTouchListener(onTouchListener(aceDiamonds)); // привязываем к объекту метод, который ждет, пока на объект не нажмут
+        aceHearts.setOnTouchListener(onTouchListener(aceDiamonds)); // привязываем к объекту метод, который ждет, пока на объект не нажмут
 
         aceDiamonds.getLocationOnScreen(posXY);
     }
@@ -84,7 +88,7 @@ public class FourPlayActivity extends Activity {
         int dp = px * (160 / dpiPixel5); //формула выведена из предыдущей
         return dp; // метод возвращает значение dp
     };
-    private View.OnTouchListener onTouchListener() { // метод, который ждет пока нажмут на объект
+    private View.OnTouchListener onTouchListener(MyCardView aceDiamonds) { // метод, который ждет пока нажмут на объект
         return new View.OnTouchListener() {
 
             @SuppressLint("ClickableViewAccessibility")
@@ -93,8 +97,8 @@ public class FourPlayActivity extends Activity {
 
                 //final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
                 //final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
-                final int x = (int) event.getX();
-                final int y = (int) event.getY();
+                final int x = (int) event.getRawX();
+                final int y = (int) event.getRawY();
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) { // рассматриваем три случая, которые необходимы для передвижения объекта (кнопка нажата -- движение -- кнопка отжата)
 
@@ -130,7 +134,7 @@ public class FourPlayActivity extends Activity {
                             ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
                                             .getLayoutParams();
                                 layoutParams.leftMargin = matrix[0][number]; // ставить на координаты такие-то (взяты из массива). использована та переменная, связанная i
-                               layoutParams.topMargin = matrix[1][number];
+                                layoutParams.topMargin = matrix[1][number];
                                 layoutParams.rightMargin = 0;
                                 layoutParams.bottomMargin = 0;
                                 view.setLayoutParams(layoutParams);
@@ -150,11 +154,16 @@ public class FourPlayActivity extends Activity {
                         if (view.getVisibility() == View.VISIBLE ) {
                             ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
                                     .getLayoutParams();
-                            layoutParams.leftMargin = x - xDelta;
-                            layoutParams.topMargin = y - yDelta;
-                            layoutParams.rightMargin = 0;
-                            layoutParams.bottomMargin = 0;
-                            view.setLayoutParams(layoutParams);
+
+                            if(event.getAction() == MotionEvent.ACTION_MOVE){
+                                view.setX(x);
+                                view.setY(y);
+                            }
+//                            layoutParams.leftMargin = x - xDelta;
+//                            layoutParams.topMargin = y - yDelta;
+//                            layoutParams.rightMargin = 0;
+//                            layoutParams.bottomMargin = 0;
+//                            view.setLayoutParams(layoutParams);
 
                             String string0 = "" + x;
                             String string1 = "" + y;

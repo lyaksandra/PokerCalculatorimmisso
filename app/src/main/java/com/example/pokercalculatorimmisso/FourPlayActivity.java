@@ -108,7 +108,7 @@ public class FourPlayActivity extends Activity {
 
                         //Toast.makeText(FourPlayActivity.this,  "куку", Toast.LENGTH_SHORT).show();
 
-                        if ((view.getVisibility() == View.VISIBLE )&& (isMove = false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
+                        if ((view.getVisibility() == View.VISIBLE) && (isMove = false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
                             xDelta = x - lParams.leftMargin; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
                             yDelta = y - lParams.topMargin; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
                             xBegin = lParams.leftMargin; // здесь мы запоминаем координату Х, когда мышка нажимает на объект

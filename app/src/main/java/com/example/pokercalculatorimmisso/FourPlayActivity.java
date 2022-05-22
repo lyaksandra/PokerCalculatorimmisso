@@ -105,13 +105,20 @@ public class FourPlayActivity extends Activity {
                         //Toast.makeText(FourPlayActivity.this,  "куку", Toast.LENGTH_SHORT).show();
 
                         if ((view.getVisibility() == View.VISIBLE )&& (isMove = false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
+                            /*
                             xDelta = x - lParams.leftMargin; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
                             yDelta = y - lParams.topMargin; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
                             xBegin = lParams.leftMargin; // здесь мы запоминаем координату Х, когда мышка нажимает на объект
                             yBegin = lParams.topMargin; // здесь мы запоминаем координату У, когда мышка нажимает на объект
                             isMove = true;
+                            */
+                            xDelta = (int) view.getX() - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
+                            yDelta = (int) view.getY() - y; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
+                            xBegin = (int) view.getX(); // здесь мы запоминаем координату Х, когда мышка нажимает на объект
+                            yBegin = (int) view.getY(); // здесь мы запоминаем координату У, когда мышка нажимает на объект
+                            isMove = true;
                         }
-
+                        Toast.makeText(FourPlayActivity.this,  "x="+ x + " y=" + y, Toast.LENGTH_SHORT).show();
                         break;
 
                     case MotionEvent.ACTION_UP: // случай, когда кнопка мыши ОТЖАТА
@@ -148,6 +155,12 @@ public class FourPlayActivity extends Activity {
                     case MotionEvent.ACTION_MOVE: // случай, когда объект движется (а движется он только тогда, когда кнопка мыши НАЖАТА и не была ОТЖАТА с прошлого раза)
 
                         if (view.getVisibility() == View.VISIBLE ) {
+                            Path path = new Path();
+                            path.moveTo(x, y);
+
+                            animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path);
+                            animation.start();
+/*
                             ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
                                     .getLayoutParams();
                             layoutParams.leftMargin = x - xDelta;
@@ -155,13 +168,14 @@ public class FourPlayActivity extends Activity {
                             layoutParams.rightMargin = 0;
                             layoutParams.bottomMargin = 0;
                             view.setLayoutParams(layoutParams);
-
+ */
+/*
                             String string0 = "" + x;
                             String string1 = "" + y;
                             String string2 = "" + xDelta;
                             String string3 = "" + yDelta;
                             Toast.makeText(FourPlayActivity.this,  "x= " + string0 + "y= " + string1 + "xDel= " + string2 + "yDel= " + string3, Toast.LENGTH_SHORT).show();
-
+*/
 //                            Toast.makeText(FourPlayActivity.this,  "y" + y, Toast.LENGTH_SHORT).show();
 //                            Toast.makeText(FourPlayActivity.this,   "x" + x, Toast.LENGTH_SHORT).show();
                         }

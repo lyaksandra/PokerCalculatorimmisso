@@ -91,10 +91,8 @@ public class FourPlayActivity extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent event) { // метод, который обрабатывает нажатие на объект
 
-                //final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
-                //final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
-                final int x = (int) event.getX();
-                final int y = (int) event.getY();
+                final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
+                final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) { // рассматриваем три случая, которые необходимы для передвижения объекта (кнопка нажата -- движение -- кнопка отжата)
 
@@ -118,7 +116,7 @@ public class FourPlayActivity extends Activity {
                             yBegin = (int) view.getY(); // здесь мы запоминаем координату У, когда мышка нажимает на объект
                             isMove = true;
                         }
-                        Toast.makeText(FourPlayActivity.this,  "x="+ x + " y=" + y, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FourPlayActivity.this,  "xDelta="+ xDelta + " yDelta=" + yDelta, Toast.LENGTH_SHORT).show();
                         break;
 
                     case MotionEvent.ACTION_UP: // случай, когда кнопка мыши ОТЖАТА
@@ -158,7 +156,7 @@ public class FourPlayActivity extends Activity {
                             Path path = new Path();
                             path.moveTo(x, y);
 
-                            animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path);
+                            animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
                             animation.start();
 /*
                             ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
@@ -169,13 +167,9 @@ public class FourPlayActivity extends Activity {
                             layoutParams.bottomMargin = 0;
                             view.setLayoutParams(layoutParams);
  */
-/*
-                            String string0 = "" + x;
-                            String string1 = "" + y;
-                            String string2 = "" + xDelta;
-                            String string3 = "" + yDelta;
-                            Toast.makeText(FourPlayActivity.this,  "x= " + string0 + "y= " + string1 + "xDel= " + string2 + "yDel= " + string3, Toast.LENGTH_SHORT).show();
-*/
+
+                            Toast.makeText(FourPlayActivity.this,  "x= " + x + " y= " + y + " xDel= " + xDelta + " yDel= " + yDelta + " getX=" + view.getX() + " getY=" + view.getY(), Toast.LENGTH_SHORT).show();
+
 //                            Toast.makeText(FourPlayActivity.this,  "y" + y, Toast.LENGTH_SHORT).show();
 //                            Toast.makeText(FourPlayActivity.this,   "x" + x, Toast.LENGTH_SHORT).show();
                         }

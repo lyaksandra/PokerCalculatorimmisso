@@ -30,10 +30,12 @@ public class FourPlayActivity extends Activity {
     private boolean suitable = false; // переменная флаг для контроля нахождения карты в месте под карту
     private boolean isMove = false; //еще одна переменная флаг для движения
     int number; // номер места под карту из массива, чтобы запоминать i из цикла
+    private int xDel;
+    private int yDel;
     private int xDelta;
     private int yDelta;
-    private int xBegin; // последняя статичная координата Х объекта, которую я запоминаю при начале передвижения этого объекта
-    private int yBegin; // последняя статичная координата У объекта, которую я запоминаю при начале передвижения этого объекта
+    private int xBegin = 0; // последняя статичная координата Х объекта, которую я запоминаю при начале передвижения этого объекта
+    private int yBegin = 0; // последняя статичная координата У объекта, которую я запоминаю при начале передвижения этого объекта
     int[] posXY = new int[2];
     int xCard = posXY[0];
     int yCard = posXY[1];
@@ -93,6 +95,8 @@ public class FourPlayActivity extends Activity {
 
                 final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
                 final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
+                int x1 = (int) event.getX();
+                int y1 = (int) event.getY();
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) { // рассматриваем три случая, которые необходимы для передвижения объекта (кнопка нажата -- движение -- кнопка отжата)
 
@@ -100,9 +104,15 @@ public class FourPlayActivity extends Activity {
                         ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams) // создаю слой, по координатам которого будет двигаться объект
                                 view.getLayoutParams();
 
-                        //Toast.makeText(FourPlayActivity.this,  "куку", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FourPlayActivity.this,  "getVis=" + view.getVisibility() + " move=" + isMove + " VIS=" + View.VISIBLE, Toast.LENGTH_SHORT).show();
+/*
+                        DisplayMetrics metrics = new DisplayMetrics();
+                        WindowManager windowManager = (WindowManager) context
+                                .getSystemService(Context.WINDOW_SERVICE);
+                        windowManager.getDefaultDisplay().getMetrics(metrics);
+*/
 
-                        if ((view.getVisibility() == View.VISIBLE )&& (isMove = false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
+                        if ((view.getVisibility() == View.VISIBLE )&& (isMove == false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
                             /*
                             xDelta = x - lParams.leftMargin; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
                             yDelta = y - lParams.topMargin; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
@@ -110,13 +120,26 @@ public class FourPlayActivity extends Activity {
                             yBegin = lParams.topMargin; // здесь мы запоминаем координату У, когда мышка нажимает на объект
                             isMove = true;
                             */
+                            view.getId();
+                            int[] location = new int[2];
+                            view.getLocationOnScreen(location);
+                            xDel = location[0] - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
+                            yDel = location[1] - y; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
+                            xDelta = xDel*2142/1852;
+                            yDelta = yDel*1073/1080;
+                            xBegin = location[0]; // здесь мы запоминаем координату Х, когда мышка нажимает на объект
+                            yBegin = location[1]; // здесь мы запоминаем координату У, когда мышка нажимает на объект
+                            isMove = true;
+                            /*
                             xDelta = (int) view.getX() - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
                             yDelta = (int) view.getY() - y; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
                             xBegin = (int) view.getX(); // здесь мы запоминаем координату Х, когда мышка нажимает на объект
                             yBegin = (int) view.getY(); // здесь мы запоминаем координату У, когда мышка нажимает на объект
                             isMove = true;
+                             */
+                            //Toast.makeText(FourPlayActivity.this,  "getX="+ location[0] + " getY=" + location[1] + " xDel=" + xDelta + " yDel=" + yDelta +" x=" + x + " y=" + y, Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(FourPlayActivity.this,  "xDelta="+ xDelta + " yDelta=" + yDelta, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(FourPlayActivity.this,  "xBeg="+ xBegin + " yBeg=" + yBegin, Toast.LENGTH_SHORT).show();
                         break;
 
                     case MotionEvent.ACTION_UP: // случай, когда кнопка мыши ОТЖАТА
@@ -154,7 +177,7 @@ public class FourPlayActivity extends Activity {
 
                         if (view.getVisibility() == View.VISIBLE ) {
                             Path path = new Path();
-                            path.moveTo(x, y);
+                            path.moveTo(x+xDelta, y+yDelta);
 
                             animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
                             animation.start();
@@ -168,10 +191,10 @@ public class FourPlayActivity extends Activity {
                             view.setLayoutParams(layoutParams);
  */
 
-                            Toast.makeText(FourPlayActivity.this,  "x= " + x + " y= " + y + " xDel= " + xDelta + " yDel= " + yDelta + " getX=" + view.getX() + " getY=" + view.getY(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FourPlayActivity.this,  "x= " + x + " y= " + y + " xDel= " + xDelta + " yDel= " + yDelta + " getX=" + view.getX() + " getY=" + view.getY(), Toast.LENGTH_SHORT).show();
 
-//                            Toast.makeText(FourPlayActivity.this,  "y" + y, Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(FourPlayActivity.this,   "x" + x, Toast.LENGTH_SHORT).show();
+                          Toast.makeText(FourPlayActivity.this,  "x1=" + x1 + " y1=" + y1, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(FourPlayActivity.this,   "x1" + x, Toast.LENGTH_SHORT).show();
                         }
                         break;
                 }

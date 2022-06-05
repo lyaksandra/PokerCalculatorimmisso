@@ -232,7 +232,7 @@ public class FourPlayActivity extends Activity {
                         Toast.makeText(FourPlayActivity.this,  "x" + matrix[0][number] + "y" + matrix[1][number], Toast.LENGTH_SHORT).show();
                         break;
 
-                    case MotionEvent.ACTION_MOVE: // случай, когда объект движется (а движется он только тогда, когда кнопка мыши НАЖАТА и не была ОТЖАТА с прошлого раза)
+                    case MotionEvent.ACTION_MOVE: //случай, когда объект движется (а движется он только тогда, когда кнопка мыши НАЖАТА и не была ОТЖАТА с прошлого раза)
 
                         if (view.getVisibility() == View.VISIBLE ) {
                             Path path = new Path();

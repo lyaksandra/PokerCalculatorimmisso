@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class MyCardView extends androidx.appcompat.widget.AppCompatImageView {
 
-    int number;
+    int numb;
     int suitNumber;
 
     public MyCardView(@NonNull Context context) {

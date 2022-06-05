@@ -23,13 +23,19 @@ public class FourPlayActivity extends Activity {
     //ActivityFourPlayBinding binding;
     CardAdapter adapter;
     BottomSheetDialog dialog;
-    int dpiPixel5 = 440; // dpi моего эмулятора
+    private final int dpiPixel5 = 440; // dpi моего эмулятора
 
     private ViewGroup mainLayout;
 
+    private final int CARD_AMOUNT = 4;
+    MyCardView[] CardArray = new MyCardView [CARD_AMOUNT];//Объекты визуальные карт, номер визуальной карты в этом массиве соотвествует значениею элемента массива в IndexInCardArray
+    int[] CardScreenPosition = new int [CARD_AMOUNT];//Позиция каждой карты на экране (плюс в каждой позиции на экране, выводится та карта, номер которой в этом массиве больше)
+    int[] IndexInCardArray = new int [CARD_AMOUNT];//Номер в массиве - это индекс визуальной карты в массиве CardArray, один и тот же индекс в массивах CardScreenPosition и IndexInCardArray соответствуют одной визуальной карте
+    private int oldPosition, newPosition;
+
     private boolean suitable = false; // переменная флаг для контроля нахождения карты в месте под карту
     private boolean isMove = false; //еще одна переменная флаг для движения
-    int number; // номер места под карту из массива, чтобы запоминать i из цикла
+    private int number; // номер места под карту из массива, чтобы запоминать i из цикла
     private int xDel;
     private int yDel;
     private int xDelta;
@@ -39,11 +45,14 @@ public class FourPlayActivity extends Activity {
     int[] posXY = new int[2];
     int xCard = posXY[0];
     int yCard = posXY[1];
-    private final int cardLength = 270; // длина карты in pixels
-    private final int cardWidth = 200; // ширина карты in pixels
+    private final int cardLength = 284; // длина карты in pixels (270)
+    private final int cardWidth = 225; // ширина карты in pixels (200/210)
+    //int [][] matrix= { // массив координат в пикселях, взятых из paint, для каждого места под карту (5 игроков по 2 карты, 4 масти, 5 в центре)
+           // {37, 251, 475, 696, 910, 1129, 1357, 1575, 227, 473, 727, 1049, 1375, 37, 251, 684, 912, 1357, 1586}, // координаты x от левого края
+            //{41, 41, 63, 63, 63, 63, 41, 41, 365, 365, 365, 365, 365, 717, 717, 707, 702, 702, 702} // координаты y от верхнего края
     int [][] matrix= { // массив координат в пикселях, взятых из paint, для каждого места под карту (5 игроков по 2 карты, 4 масти, 5 в центре)
-            {37, 251, 475, 696, 910, 1129, 1357, 1575, 227, 473, 727, 1049, 1375, 37, 251, 684, 912, 1357, 1586}, // координаты x от левого края
-            {41, 41, 63, 63, 63, 63, 41, 41, 365, 365, 365, 365, 365, 717, 717, 707, 702, 702, 702} // координаты y от верхнего края
+            {35, 253, 499, 730, 964, 1200, 1434, 1670, 228, 493, 762, 1105, 1452, 35, 253, 720, 958, 1434, 1675}, // координаты x от левого края
+            {35, 35, 58, 58 , 58, 58, 35, 35, 337 , 337 , 337 , 337 , 337 , 665 , 665 , 655 , 650 , 650 , 650} // координаты y от верхнего края
     };
 
     @SuppressLint("ClickableViewAccessibility")
@@ -52,24 +61,42 @@ public class FourPlayActivity extends Activity {
         super.onCreate(savedInstanceState); // наследование функций и методов онКриэйта
         setContentView(R.layout.activity_four_play); //привязка к XML-файла к активити
         mainLayout = findViewById(R.id.four_play); // вводим новый объект, которая будет отвечать за XML файл массива
+        CardArray[0]=findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[1]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[2]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[3]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        /*
         MyCardView aceDiamonds = findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceClubs = findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceSpades = findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         MyCardView aceHearts = findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
 
         Path path = new Path(); // создаем объект (путь) типа Path
-        path.moveTo(251f, 41f); // и перемещаем его по таким координатам (взяты вторые координаты из массива)
+        path.moveTo(762f, 337f); // и перемещаем его по таким координатам (взяты вторые координаты из массива)
 
         animation = ObjectAnimator.ofFloat(aceClubs, View.X, View.Y, path); // связываем вместе объект, который нам нужно подвинуть и путь, и передвигаем их по ранее заданным координатам
         animation.start(); // запускаем процесс передвиженя по координатам
+*/
 
-
+        for (int index = 0; index < CARD_AMOUNT; index++) {//Цикл по всем картам на экране
+         CardArray[index].setOnTouchListener(onTouchListener()); //привязываем к объекту метод, который ждет, пока на объект не нажмут
+          CardArray[index].numb=index;//Устанавливаем внутри объекта карты позицию в массивах IndexInCardArray и CardScreenPosition
+          IndexInCardArray[index] = index;
+      }
+        CardScreenPosition[0]=2;//Diamonds на 3 месте
+        CardArray[0].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[1]=3;//Clubs на 4 месте
+        CardArray[1].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[2]=4;//Spades на 5 месте
+        CardArray[2].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[3]=5;//Hearts на 6 месте
+        CardArray[3].suitNumber=3;//Устанавливаем внутри объекта карты масть
+/*
         aceDiamonds.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
         aceClubs.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
         aceSpades.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
         aceHearts.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-
-        aceDiamonds.getLocationOnScreen(posXY);
+ */
     }
 
     @Override
@@ -77,15 +104,29 @@ public class FourPlayActivity extends Activity {
         super.onStart(); // наследование функций и методов онСтарта
     }
 
-    protected int transformationDpToPx(int dp){ // метод который преобразовывает dp в px, но он неидеален, так как dpi, которая используется в расчетах не константа для всех смартфонов
-        int px = dp * (dpiPixel5/160); //формула найдена в интернете
-        return px; // метод возвращает пиксельное значение
-    };
+    protected int findCardNumber(int Numb) {//Если есть карта в позиции на экране numb, то возвращает индекс этой карты в массиве IndexInCardArray и CardScreenPosition
+        int arrin;
+        arrin = CARD_AMOUNT + 1;
+        for (int index = CARD_AMOUNT - 1; index >= 0; index--) {//Цикл по всем картам на экране
+            if (CardScreenPosition[index] == Numb) {  // Если позиция карты на экране является заданной в аргументе функции
+                arrin = index; //Запоминаем индекс в массиве для возврата из функции
+                break; //прерываем цикл, хотя возможно в этой строке нет необходимости
+            }
+        }
+        return arrin;
+    }
 
-    protected int transformationPxToDp(int px){ //обратный метод
-        int dp = px * (160 / dpiPixel5); //формула выведена из предыдущей
-        return dp; // метод возвращает значение dp
-    };
+        protected int transformationDpToPx ( int dp)
+        { // метод который преобразовывает dp в px, но он неидеален, так как dpi, которая используется в расчетах не константа для всех смартфонов
+            int px = dp * (dpiPixel5 / 160); //формула найдена в интернете
+            return px; // метод возвращает пиксельное значение
+        };
+
+        protected int transformationPxToDp ( int px){ //обратный метод
+            int dp = px * (160 / dpiPixel5); //формула выведена из предыдущей
+            return dp; // метод возвращает значение dp
+        };
+
     private View.OnTouchListener onTouchListener() { // метод, который ждет пока нажмут на объект
         return new View.OnTouchListener() {
 
@@ -104,23 +145,7 @@ public class FourPlayActivity extends Activity {
                         ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams) // создаю слой, по координатам которого будет двигаться объект
                                 view.getLayoutParams();
 
-                        //Toast.makeText(FourPlayActivity.this,  "getVis=" + view.getVisibility() + " move=" + isMove + " VIS=" + View.VISIBLE, Toast.LENGTH_SHORT).show();
-/*
-                        DisplayMetrics metrics = new DisplayMetrics();
-                        WindowManager windowManager = (WindowManager) context
-                                .getSystemService(Context.WINDOW_SERVICE);
-                        windowManager.getDefaultDisplay().getMetrics(metrics);
-*/
-
                         if ((view.getVisibility() == View.VISIBLE )&& (isMove == false)) { // двигает только, когда объект видимый (можно использовать будет в дальнейшем, когда будет куча объектов и лишь некоторые будут видимыми)
-                            /*
-                            xDelta = x - lParams.leftMargin; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
-                            yDelta = y - lParams.topMargin; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
-                            xBegin = lParams.leftMargin; // здесь мы запоминаем координату Х, когда мышка нажимает на объект
-                            yBegin = lParams.topMargin; // здесь мы запоминаем координату У, когда мышка нажимает на объект
-                            isMove = true;
-                            */
-                            view.getId();
                             int[] location = new int[2];
                             view.getLocationOnScreen(location);
                             xDel = location[0] - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
@@ -130,14 +155,6 @@ public class FourPlayActivity extends Activity {
                             xBegin = location[0]; // здесь мы запоминаем координату Х, когда мышка нажимает на объект
                             yBegin = location[1]; // здесь мы запоминаем координату У, когда мышка нажимает на объект
                             isMove = true;
-                            /*
-                            xDelta = (int) view.getX() - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
-                            yDelta = (int) view.getY() - y; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
-                            xBegin = (int) view.getX(); // здесь мы запоминаем координату Х, когда мышка нажимает на объект
-                            yBegin = (int) view.getY(); // здесь мы запоминаем координату У, когда мышка нажимает на объект
-                            isMove = true;
-                             */
-                            //Toast.makeText(FourPlayActivity.this,  "getX="+ location[0] + " getY=" + location[1] + " xDel=" + xDelta + " yDel=" + yDelta +" x=" + x + " y=" + y, Toast.LENGTH_SHORT).show();
                         }
                         //Toast.makeText(FourPlayActivity.this,  "xBeg="+ xBegin + " yBeg=" + yBegin, Toast.LENGTH_SHORT).show();
                         break;
@@ -147,30 +164,72 @@ public class FourPlayActivity extends Activity {
                         suitable = false; // обозначаем переменную флаг ложью, чтобы далее использовать ее значение (тру или фолз)
                         for (int i = 0; i <= 18; i++) {
 
+                            //Toast.makeText(FourPlayActivity.this,  "x=" + matrix[0][i] + " y=" + matrix[1][i] + "xMouse" + x + "yMouse" + y + "i" + i + " wid=" + cardWidth + " len=" + cardLength, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(FourPlayActivity.this,   "xMouse=" + x + " yMouse=" + y , Toast.LENGTH_SHORT).show();
+
                             if ((matrix[0][i] <= x) && (x <= matrix[0][i] + cardWidth) && (matrix[1][i] <= y) && (y <= matrix[1][i]+ cardLength)) {  // условия для попадания координаты мыши/карты в нужный прямоугольник
                                 suitable = true; //тут я в сомнениях, ставить тру или фолз, потому что фолз на фолз даст тру или фолз просто поменяется на тру
-                                number = i; //благодаря этой переменной я могу использовать i вне цикла
+                                number = i; //запоминаем в переменную позицию на экране, куда перенесли карту
                                 break; //прерываем цикл, хотя возможно в этой строке нет необходимости
                             }
                         }
 
-                        if (suitable = true) { //теперь пытаюсь делать переставление объекта после отжатия клавишы, когда флаг тру, но не получается. объект просто двигается по экрану
-                            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
-                                            .getLayoutParams();
-                                layoutParams.leftMargin = matrix[0][number]; // ставить на координаты такие-то (взяты из массива). использована та переменная, связанная i
-                               layoutParams.topMargin = matrix[1][number];
-                                layoutParams.rightMargin = 0;
-                                layoutParams.bottomMargin = 0;
-                                view.setLayoutParams(layoutParams);
-                        } else { //и когда флаг фолз. не работает ни то ни другое
-                            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
-                                        .getLayoutParams();
-                                layoutParams.leftMargin = xBegin; //ставить на прошлые зафиксированные координаты
-                                layoutParams.topMargin = yBegin;
-                                layoutParams.rightMargin = 0;
-                                layoutParams.bottomMargin = 0;
-                                view.setLayoutParams(layoutParams);
+                        if (suitable == true) { //Если мышка попала в нужные коррдинаты на экране
+                            newPosition=findCardNumber(number);//Находим индекс карты, которая находится на позиции, куда нужно перенести карту
+                            suitable=false;
+                            if ((number<2)&&(number>5)&&(newPosition>CARD_AMOUNT)) {//Если новая позиция карты не в колоде (3,4,5,6 место на экране), а на поле и там еще нет карты
+                                suitable = true; //Передвигать можно
+                            }
+                            if ((suitable==false)&&(number>=2)&&(number<=5)&&(((MyCardView) view).suitNumber==number-2)) {//Если новая позиция карты в колоде (3,4,5,6 место на экране), а не на поле и масть в карте совпадает с позицией в колоде для этой масти
+                                suitable = true; //Передвигать можно
+                            }
+                        }
+
+                        int oldPosition = CardScreenPosition [((MyCardView) view).numb]; //НОВОЕ запоминаем старую позицию карты пока мы не поменяли массив в цикле for ниже
+                        int oldPosRemember = findCardNumber(oldPosition); //НОВОЕ запоминаем индекс карты в массиве IndexInCardArray, которая находиться под картой, которую мы передвинули из стопки масти
+                        if (oldPosRemember == newPosition) { //НОВОЕ если карта после движения оказалась на той же позиции откуда и начала свое движение, то можно сразу переносить ее на начальные коордианты (см. пункт else)
+                            suitable = false;
+                        }
+                        if (suitable == true) { //теперь пытаюсь делать переставление объекта после отжатия клавишы, когда флаг тру, но не получается. объект просто двигается по экрану
+                            isMove = false;//Изменений в массивах не было
+                            if((newPosition < CARD_AMOUNT) && (number >= 2) && (number <= 5) && (((MyCardView) view).suitNumber == number - 2))
+                            {//Если новая позиция карты в колоде (3,4,5,6 место на экране), а не на поле и масть в карте совпадает с позицией в колоде для этой масти,  когда в колоде есть карта(ы) такой масти
+                                CardArray[IndexInCardArray[newPosition]].setVisibility(View.INVISIBLE);//Предыдущая карта становится невидимой
+                                int temp2 = IndexInCardArray[((MyCardView) view).numb];//Запоминаем индекс переносимой карты в массиве CardArray
+                                for (int i2 = ((MyCardView) view).numb; i2 < CARD_AMOUNT - 1; i2++) {//Цикл по всем картам, кторые находятся в массиве карт после передвигаемой
+                                    CardScreenPosition[i2] = CardScreenPosition[i2+1] ;//Сдвигаем в массиве позиций карт на одно место левее
+                                    IndexInCardArray[i2] = IndexInCardArray[i2+1];//Сдвигаем в массиве индексов позиций карт на одно место левее
+                                }
+                                isMove = true;//Изменения в массиве карт есть
+                                IndexInCardArray[CARD_AMOUNT - 1] = temp2;//Вставляем в массив индексов карт на экране позицию передвигаемой карты на последнее место
+                                CardScreenPosition[CARD_AMOUNT - 1] = number;//Вставляем в массив позиций карт на экране в последнее место новую позицию передвигаемой карты
+                                ((MyCardView) view).numb = CARD_AMOUNT - 1;//В объекте MyCardView сохраняем информацию, что ее индекс в массиве позиций карт и в массиве индексов явлется CARD_AMOUNT-1 (карта стала последней)
+                            }
+                            if(isMove == false)
+                            {//Если новая позиция карты может содержать только одну карту или на месте масти, куда переностися карта, нет ни одной карты
+                                CardScreenPosition[((MyCardView) view).numb] = number;//Устанавливем для карты новую позицию на экране
+                                isMove = true;//зменения в массиве карт есть
+                            }
+                            if (oldPosRemember < CARD_AMOUNT) { //НОВОЕ проверяем есть ли вообще под картой, которую мы передвинули еще карты. если есть, делаем видимой
+                                CardArray[IndexInCardArray[oldPosRemember]].setVisibility(View.VISIBLE); //НОВОЕ делаем карту на старом месте карты, стоявшей в одной из стопки мастей видимой
+                            }
+
+                            Path path = new Path();
+                            path.moveTo(matrix[0][number], matrix[1][number]);
+
+                            animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
+                            animation.start();
+                        } // ВАЖНО этой скобки в коде не было поэтому посмотреть папин код и понять где скобка
+
+                        //Toast.makeText(FourPlayActivity.this,  "kuku", Toast.LENGTH_SHORT).show();
+                        else { //и когда флаг фолз. не работает ни то ни другое
+                            Path path = new Path();
+                            path.moveTo(xBegin, yBegin);
+
+                            animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
+                            animation.start();
                     }
+                        Toast.makeText(FourPlayActivity.this,  "x" + matrix[0][number] + "y" + matrix[1][number], Toast.LENGTH_SHORT).show();
                         break;
 
                     case MotionEvent.ACTION_MOVE: // случай, когда объект движется (а движется он только тогда, когда кнопка мыши НАЖАТА и не была ОТЖАТА с прошлого раза)
@@ -181,29 +240,33 @@ public class FourPlayActivity extends Activity {
 
                             animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
                             animation.start();
-/*
-                            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
+
+                          //Toast.makeText(FourPlayActivity.this,  "x1=" + x1 + " y1=" + y1, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(FourPlayActivity.this,   "x1" + x, Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
+                mainLayout.invalidate();
+                return true;
+            }
+        };
+    }
+
+     /*
+     ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view
                                     .getLayoutParams();
                             layoutParams.leftMargin = x - xDelta;
                             layoutParams.topMargin = y - yDelta;
                             layoutParams.rightMargin = 0;
                             layoutParams.bottomMargin = 0;
                             view.setLayoutParams(layoutParams);
- */
 
-                            //Toast.makeText(FourPlayActivity.this,  "x= " + x + " y= " + y + " xDel= " + xDelta + " yDel= " + yDelta + " getX=" + view.getX() + " getY=" + view.getY(), Toast.LENGTH_SHORT).show();
-
-                          Toast.makeText(FourPlayActivity.this,  "x1=" + x1 + " y1=" + y1, Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(FourPlayActivity.this,   "x1" + x, Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                }
-
-                mainLayout.invalidate();
-                return true;
-            }
-        };
-    }
+                            xDelta = (int) view.getX() - x; //внутренние переменные: xDelta YDelta это не переменные моего объекта, а переменные в программе
+                            yDelta = (int) view.getY() - y; // xDelta yDelta это разницы координат где нажалась мышка и левой верхней координатой карты
+                            xBegin = (int) view.getX(); // здесь мы запоминаем координату Х, когда мышка нажимает на объект
+                            yBegin = (int) view.getY(); // здесь мы запоминаем координату У, когда мышка нажимает на объект
+                            isMove = true;
+                             */
 
     //                            else { // что делать если не попал
 //                                ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view

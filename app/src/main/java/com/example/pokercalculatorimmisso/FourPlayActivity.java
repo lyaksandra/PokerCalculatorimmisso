@@ -33,6 +33,7 @@ public class FourPlayActivity extends Activity {
     int[] IndexInCardArray = new int [CARD_AMOUNT];//Номер в массиве - это индекс визуальной карты в массиве CardArray, один и тот же индекс в массивах CardScreenPosition и IndexInCardArray соответствуют одной визуальной карте
     private int oldPosition, newPosition;
 
+    private boolean isFirst = true; //переменная флаг, чтобы определять массив в онТаче только единожды
     private boolean suitable = false; // переменная флаг для контроля нахождения карты в месте под карту
     private boolean isMove = false; //еще одна переменная флаг для движения
     private int number; // номер места под карту из массива, чтобы запоминать i из цикла
@@ -179,63 +180,67 @@ public class FourPlayActivity extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent event) { // метод, который обрабатывает нажатие на объект
 
-                black0.getLocationOnScreen(location);
-                matrix[0][0]=location[0];
-                matrix[1][0]=location[1];
-                black1.getLocationOnScreen(location);
-                matrix[0][1]=location[0];
-                matrix[1][1]=location[1];
-                black2.getLocationOnScreen(location);
-                matrix[0][2]=location[0];
-                matrix[1][2]=location[1];
-                black3.getLocationOnScreen(location);
-                matrix[0][3]=location[0];
-                matrix[1][3]=location[1];
-                black4.getLocationOnScreen(location);
-                matrix[0][4]=location[0];
-                matrix[1][4]=location[1];
-                black5.getLocationOnScreen(location);
-                matrix[0][5]=location[0];
-                matrix[1][5]=location[1];
-                black6.getLocationOnScreen(location);
-                matrix[0][6]=location[0];
-                matrix[1][6]=location[1];
-                black7.getLocationOnScreen(location);
-                matrix[0][7]=location[0];
-                matrix[1][7]=location[1];
-                black8.getLocationOnScreen(location);
-                matrix[0][8]=location[0];
-                matrix[1][8]=location[1];
-                black9.getLocationOnScreen(location);
-                matrix[0][9]=location[0];
-                matrix[1][9]=location[1];
-                black10.getLocationOnScreen(location);
-                matrix[0][10]=location[0];
-                matrix[1][10]=location[1];
-                black11.getLocationOnScreen(location);
-                matrix[0][11]=location[0];
-                matrix[1][11]=location[1];
-                black12.getLocationOnScreen(location);
-                matrix[0][12]=location[0];
-                matrix[1][12]=location[1];
-                black13.getLocationOnScreen(location);
-                matrix[0][13]=location[0];
-                matrix[1][13]=location[1];
-                black14.getLocationOnScreen(location);
-                matrix[0][14]=location[0];
-                matrix[1][14]=location[1];
-                black15.getLocationOnScreen(location);
-                matrix[0][15]=location[0];
-                matrix[1][15]=location[1];
-                black16.getLocationOnScreen(location);
-                matrix[0][16]=location[0];
-                matrix[1][16]=location[1];
-                black17.getLocationOnScreen(location);
-                matrix[0][17]=location[0];
-                matrix[1][17]=location[1];
-                black18.getLocationOnScreen(location);
-                matrix[0][18]=location[0];
-                matrix[1][18]=location[1];
+                if (isFirst == true) {
+                    black0.getLocationOnScreen(location);
+                    matrix[0][0] = location[0];
+                    matrix[1][0] = location[1];
+                    black1.getLocationOnScreen(location);
+                    matrix[0][1] = location[0];
+                    matrix[1][1] = location[1];
+                    black2.getLocationOnScreen(location);
+                    matrix[0][2] = location[0];
+                    matrix[1][2] = location[1];
+                    black3.getLocationOnScreen(location);
+                    matrix[0][3] = location[0];
+                    matrix[1][3] = location[1];
+                    black4.getLocationOnScreen(location);
+                    matrix[0][4] = location[0];
+                    matrix[1][4] = location[1];
+                    black5.getLocationOnScreen(location);
+                    matrix[0][5] = location[0];
+                    matrix[1][5] = location[1];
+                    black6.getLocationOnScreen(location);
+                    matrix[0][6] = location[0];
+                    matrix[1][6] = location[1];
+                    black7.getLocationOnScreen(location);
+                    matrix[0][7] = location[0];
+                    matrix[1][7] = location[1];
+                    black8.getLocationOnScreen(location);
+                    matrix[0][8] = location[0];
+                    matrix[1][8] = location[1];
+                    black9.getLocationOnScreen(location);
+                    matrix[0][9] = location[0];
+                    matrix[1][9] = location[1];
+                    black10.getLocationOnScreen(location);
+                    matrix[0][10] = location[0];
+                    matrix[1][10] = location[1];
+                    black11.getLocationOnScreen(location);
+                    matrix[0][11] = location[0];
+                    matrix[1][11] = location[1];
+                    black12.getLocationOnScreen(location);
+                    matrix[0][12] = location[0];
+                    matrix[1][12] = location[1];
+                    black13.getLocationOnScreen(location);
+                    matrix[0][13] = location[0];
+                    matrix[1][13] = location[1];
+                    black14.getLocationOnScreen(location);
+                    matrix[0][14] = location[0];
+                    matrix[1][14] = location[1];
+                    black15.getLocationOnScreen(location);
+                    matrix[0][15] = location[0];
+                    matrix[1][15] = location[1];
+                    black16.getLocationOnScreen(location);
+                    matrix[0][16] = location[0];
+                    matrix[1][16] = location[1];
+                    black17.getLocationOnScreen(location);
+                    matrix[0][17] = location[0];
+                    matrix[1][17] = location[1];
+                    black18.getLocationOnScreen(location);
+                    matrix[0][18] = location[0];
+                    matrix[1][18] = location[1];
+
+                    isFirst = false;
+                }
 
                 final int x = (int) event.getRawX(); //координата х где нажалась кнопка мыши
                 final int y = (int) event.getRawY(); //координата у где нажалась кнопка мыши
@@ -300,7 +305,6 @@ public class FourPlayActivity extends Activity {
 
                         int oldPosition = CardScreenPosition [((MyCardView) view).numb]; //НОВОЕ запоминаем старую позицию карты пока мы не поменяли массив в цикле for ниже
                         //Toast.makeText(FourPlayActivity.this,   "oldPos " + oldPosition, Toast.LENGTH_SHORT).show();
-                        int oldPosRemember = findCardNumber(oldPosition); //НОВОЕ запоминаем индекс карты в массиве IndexInCardArray, которая находиться под картой, которую мы передвинули из стопки масти
                         if (oldPosition == number) { //НОВОЕ если карта после движения оказалась на той же позиции откуда и начала свое движение, то можно сразу переносить ее на начальные коордианты (см. пункт else)
                             suitable = false;
                         }
@@ -326,9 +330,10 @@ public class FourPlayActivity extends Activity {
                                 CardScreenPosition[((MyCardView) view).numb] = number;//Устанавливем для карты новую позицию на экране
                                 isMove = true;//зменения в массиве карт есть
                             }
-                            //if (oldPosRemember < CARD_AMOUNT) { //НОВОЕ проверяем есть ли вообще под картой, которую мы передвинули еще карты. если есть, делаем видимой
-                              //  CardArray[IndexInCardArray[oldPosRemember]].setVisibility(View.VISIBLE); //НОВОЕ делаем карту на старом месте карты, стоявшей в одной из стопки мастей видимой
-                            //}
+                            int oldPosRemember = findCardNumber(oldPosition); //НОВОЕ запоминаем индекс карты в массиве IndexInCardArray, которая находиться под картой, которую мы передвинули из стопки масти
+                            if (oldPosRemember < CARD_AMOUNT) { //НОВОЕ проверяем есть ли вообще под картой, которую мы передвинули еще карты. если есть, делаем видимой
+                                CardArray[IndexInCardArray[oldPosRemember]].setVisibility(View.VISIBLE); //НОВОЕ делаем карту на старом месте карты, стоявшей в одной из стопки мастей видимой
+                            }
 
                             //Toast.makeText(FourPlayActivity.this,  "x" + matrix[0][number] + "y" + matrix[1][number], Toast.LENGTH_SHORT).show();
 

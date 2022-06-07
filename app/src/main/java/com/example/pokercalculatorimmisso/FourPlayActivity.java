@@ -351,6 +351,7 @@ public class FourPlayActivity extends Activity {
                             animation = ObjectAnimator.ofFloat(view, View.X, View.Y, path); // View.X, View.Y
                             animation.start();
                         }
+                        isMove=false;
                         //Toast.makeText(FourPlayActivity.this,  "xWh="+ location[0] + " yWh=" + location[1], Toast.LENGTH_SHORT).show();
                         //Toast.makeText(FourPlayActivity.this,  "x="+ x + " y=" + y, Toast.LENGTH_SHORT).show();
                         //Toast.makeText(FourPlayActivity.this,  "x" + matrix[0][number] + "y" + matrix[1][number], Toast.LENGTH_SHORT).show();

@@ -27,7 +27,7 @@ public class FourPlayActivity extends Activity {
 
     private ViewGroup mainLayout;
 
-    private final int CARD_AMOUNT = 4;
+    private final int CARD_AMOUNT = 52;
     MyCardView[] CardArray = new MyCardView [CARD_AMOUNT];//Объекты визуальные карт, номер визуальной карты в этом массиве соотвествует значениею элемента массива в IndexInCardArray
     int[] CardScreenPosition = new int [CARD_AMOUNT];//Позиция каждой карты на экране (плюс в каждой позиции на экране, выводится та карта, номер которой в этом массиве больше)
     int[] IndexInCardArray = new int [CARD_AMOUNT];//Номер в массиве - это индекс визуальной карты в массиве CardArray, один и тот же индекс в массивах CardScreenPosition и IndexInCardArray соответствуют одной визуальной карте
@@ -56,6 +56,7 @@ public class FourPlayActivity extends Activity {
     public int[] location = new int[2];
     int[] location0 = new int[2];
     int[] location1 = new int[2];
+/*
     int[] location2 = new int[2];
     int[] location3 = new int[2];
     int[] location4 = new int[2];
@@ -73,7 +74,7 @@ public class FourPlayActivity extends Activity {
     int[] location16 = new int[2];
     int[] location17 = new int[2];
     int[] location18 = new int[2];
-
+*/
     //объявление переменных малевичей
     ImageView black0, black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12, black13, black14, black15, black16, black17, black18;
     ImageView white0, white1;
@@ -84,10 +85,65 @@ public class FourPlayActivity extends Activity {
         super.onCreate(savedInstanceState); // наследование функций и методов онКриэйта
         setContentView(R.layout.activity_four_play); //привязка к XML-файла к активити
         mainLayout = findViewById(R.id.four_play); // вводим новый объект, которая будет отвечать за XML файл массива
-        CardArray[0]=findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[1]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[2]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[3]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[0]=findViewById(R.id.two_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[1]=findViewById(R.id.two_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[2]=findViewById(R.id.two_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[3]=findViewById(R.id.two_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[4]=findViewById(R.id.three_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[5]=findViewById(R.id.three_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[6]=findViewById(R.id.three_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[7]=findViewById(R.id.three_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[8]=findViewById(R.id.four_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[9]=findViewById(R.id.four_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[10]=findViewById(R.id.four_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[11]=findViewById(R.id.four_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[12]=findViewById(R.id.five_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[13]=findViewById(R.id.five_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[14]=findViewById(R.id.five_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[15]=findViewById(R.id.five_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[16]=findViewById(R.id.six_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[17]=findViewById(R.id.six_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[18]=findViewById(R.id.six_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[19]=findViewById(R.id.six_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[20]=findViewById(R.id.seven_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[21]=findViewById(R.id.seven_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[22]=findViewById(R.id.seven_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[23]=findViewById(R.id.seven_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[24]=findViewById(R.id.eight_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[25]=findViewById(R.id.eight_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[26]=findViewById(R.id.eight_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[27]=findViewById(R.id.eight_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[28]=findViewById(R.id.nine_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[29]=findViewById(R.id.nine_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[30]=findViewById(R.id.nine_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[31]=findViewById(R.id.nine_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[32]=findViewById(R.id.ten_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[33]=findViewById(R.id.ten_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[34]=findViewById(R.id.ten_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[35]=findViewById(R.id.ten_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[36]=findViewById(R.id.jack_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[37]=findViewById(R.id.jack_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[38]=findViewById(R.id.jack_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[39]=findViewById(R.id.jack_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[40]=findViewById(R.id.queen_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[41]=findViewById(R.id.queen_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[42]=findViewById(R.id.queen_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[43]=findViewById(R.id.queen_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[44]=findViewById(R.id.king_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[45]=findViewById(R.id.king_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[46]=findViewById(R.id.king_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[47]=findViewById(R.id.king_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[48]=findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[49]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[50]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[51]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        /*
+        CardArray[0]=findViewById(R.id.king_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[1]=findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[2]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[3]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+        CardArray[4]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
+         */
 
         white0 = findViewById(R.id.white0);
         white1 = findViewById(R.id.white1);
@@ -129,20 +185,130 @@ public class FourPlayActivity extends Activity {
           CardArray[index].numb=index;//Устанавливаем внутри объекта карты позицию в массивах IndexInCardArray и CardScreenPosition
           IndexInCardArray[index] = index;
       }
+        /*
         CardScreenPosition[0]=2;//Diamonds на 3 месте
         CardArray[0].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[1]=2;//Diamonds на 3 месте
+        CardArray[1].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[2]=3;//Clubs на 4 месте
+        CardArray[2].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[3]=4;//Spades на 5 месте
+        CardArray[3].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardScreenPosition[4]=5;//Hearts на 6 месте
+        CardArray[4].suitNumber=3;//Устанавливаем внутри объекта карты масть
+         */
+
+        CardScreenPosition[0]=2;//Diamonds на 3 месте
+        CardScreenPosition[4]=2;//Diamonds на 3 месте
+        CardScreenPosition[8]=2;//Diamonds на 3 месте
+        CardScreenPosition[12]=2;//Diamonds на 3 месте
+        CardScreenPosition[16]=2;//Diamonds на 3 месте
+        CardScreenPosition[20]=2;//Diamonds на 3 месте
+        CardScreenPosition[24]=2;//Diamonds на 3 месте
+        CardScreenPosition[28]=2;//Diamonds на 3 месте
+        CardScreenPosition[32]=2;//Diamonds на 3 месте
+        CardScreenPosition[36]=2;//Diamonds на 3 месте
+        CardScreenPosition[40]=2;//Diamonds на 3 месте
+        CardScreenPosition[44]=2;//Diamonds на 3 месте
+        CardScreenPosition[48]=2;//Diamonds на 3 месте
+
+        CardArray[0].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[4].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[8].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[12].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[16].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[20].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[24].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[28].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[32].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[36].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[40].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[44].suitNumber=0;//Устанавливаем внутри объекта карты масть
+        CardArray[48].suitNumber=0;//Устанавливаем внутри объекта карты масть
+
         CardScreenPosition[1]=3;//Clubs на 4 месте
+        CardScreenPosition[5]=3;//Clubs на 4 месте
+        CardScreenPosition[9]=3;//Clubs на 4 месте
+        CardScreenPosition[13]=3;//Clubs на 4 месте
+        CardScreenPosition[17]=3;//Clubs на 4 месте
+        CardScreenPosition[21]=3;//Clubs на 4 месте
+        CardScreenPosition[25]=3;//Clubs на 4 месте
+        CardScreenPosition[29]=3;//Clubs на 4 месте
+        CardScreenPosition[33]=3;//Clubs на 4 месте
+        CardScreenPosition[37]=3;//Clubs на 4 месте
+        CardScreenPosition[41]=3;//Clubs на 4 месте
+        CardScreenPosition[45]=3;//Clubs на 4 месте
+        CardScreenPosition[49]=3;//Clubs на 4 месте
+
         CardArray[1].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[5].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[9].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[13].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[17].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[21].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[25].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[29].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[33].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[37].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[41].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[45].suitNumber=1;//Устанавливаем внутри объекта карты масть
+        CardArray[49].suitNumber=1;//Устанавливаем внутри объекта карты масть
+
         CardScreenPosition[2]=4;//Spades на 5 месте
+        CardScreenPosition[6]=4;//Spades на 5 месте
+        CardScreenPosition[10]=4;//Spades на 5 месте
+        CardScreenPosition[14]=4;//Spades на 5 месте
+        CardScreenPosition[18]=4;//Spades на 5 месте
+        CardScreenPosition[22]=4;//Spades на 5 месте
+        CardScreenPosition[26]=4;//Spades на 5 месте
+        CardScreenPosition[30]=4;//Spades на 5 месте
+        CardScreenPosition[34]=4;//Spades на 5 месте
+        CardScreenPosition[38]=4;//Spades на 5 месте
+        CardScreenPosition[42]=4;//Spades на 5 месте
+        CardScreenPosition[46]=4;//Spades на 5 месте
+        CardScreenPosition[50]=4;//Spades на 5 месте
+
         CardArray[2].suitNumber=2;//Устанавливаем внутри объекта карты масть
-        CardScreenPosition[3]=5;//Hearts на 6 месте
+        CardArray[6].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[10].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[14].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[18].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[22].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[26].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[30].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[34].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[38].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[42].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[46].suitNumber=2;//Устанавливаем внутри объекта карты масть
+        CardArray[50].suitNumber=2;//Устанавливаем внутри объекта карты масть
+
+        CardScreenPosition[3]=5;//Spades на 6 месте
+        CardScreenPosition[7]=5;//Spades на 6 месте
+        CardScreenPosition[11]=5;//Spades на 6 месте
+        CardScreenPosition[15]=5;//Spades на 6 месте
+        CardScreenPosition[19]=5;//Spades на 6 месте
+        CardScreenPosition[23]=5;//Spades на 6 месте
+        CardScreenPosition[27]=5;//Spades на 6 месте
+        CardScreenPosition[31]=5;//Spades на 6 месте
+        CardScreenPosition[35]=5;//Spades на 6 месте
+        CardScreenPosition[39]=5;//Spades на 6 месте
+        CardScreenPosition[43]=5;//Spades на 6 месте
+        CardScreenPosition[47]=5;//Spades на 6 месте
+        CardScreenPosition[51]=5;//Spades на 6 месте
+
         CardArray[3].suitNumber=3;//Устанавливаем внутри объекта карты масть
-/*
-        aceDiamonds.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceClubs.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceSpades.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
-        aceHearts.setOnTouchListener(onTouchListener()); // привязываем к объекту метод, который ждет, пока на объект не нажмут
- */
+        CardArray[7].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[11].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[15].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[19].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[23].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[27].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[31].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[35].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[39].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[43].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[47].suitNumber=3;//Устанавливаем внутри объекта карты масть
+        CardArray[51].suitNumber=3;//Устанавливаем внутри объекта карты масть
     }
 
     @Override

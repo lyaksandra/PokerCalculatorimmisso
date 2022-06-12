@@ -26,12 +26,12 @@ public class FourPlayActivity extends Activity {
 
     private ViewGroup mainLayout;
 
-    private final int CARD_AMOUNT = 52; //общее количество
+    private final int CARD_AMOUNT = 52; //общее количество карт
     MyCardView[] CardArray = new MyCardView [CARD_AMOUNT];//Объекты визуальные карт, номер визуальной карты в этом массиве соотвествует значениею элемента массива в IndexInCardArray
     int[] CardScreenPosition = new int [CARD_AMOUNT];//Позиция каждой карты на экране (плюс в каждой позиции на экране, выводится та карта, номер которой в этом массиве больше)
     int[] IndexInCardArray = new int [CARD_AMOUNT];//Номер в массиве - это индекс визуальной карты в массиве CardArray, один и тот же индекс в массивах CardScreenPosition и IndexInCardArray соответствуют одной визуальной карте
     int[] SuitArray = new int [CARD_AMOUNT]; //массив, который запоминает позиции карт одной масти в массиве IndexInCardArray
-    private int oldPosition, newPosition;
+    private int oldPosition, newPosition; //запоминать позиции карт до/после переноса
 
     private boolean isFirst = true; //переменная флаг, чтобы определять массив в онТаче только единожды
     private boolean suitable = false; // переменная флаг для контроля нахождения карты в месте под карту
@@ -266,14 +266,14 @@ public class FourPlayActivity extends Activity {
         super.onStart(); // наследование функций и методов онСтарта
     }
 
-    protected int findSuit (int Position) {
+    protected int findSuit (int Position) { //функция, которая возвращает кол-во карт, находящихся в колоде одной масти и заполняющая массив с помощью индексов из IndexInCardArray
         int inSuit = 0;
         for (int i = 0; i < CARD_AMOUNT; i++) {
-            SuitArray[i] = CARD_AMOUNT + 1;
+            SuitArray[i] = CARD_AMOUNT + 1; //заполняет пустой массив одинаковыми числами
         }
         for (int j = 0; j < CARD_AMOUNT; j++) {
             if (CardScreenPosition[j] == Position) {
-                SuitArray[inSuit] = j;
+                SuitArray[inSuit] = j; //заполняет массив нужными индексами
                 inSuit = inSuit + 1;
             }
         }
@@ -310,7 +310,7 @@ public class FourPlayActivity extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent event) { // метод, который обрабатывает нажатие на объект
 
-                if (isFirst == true) {
+                if (isFirst == true) { //заполняем массив координат
                     black0.getLocationOnScreen(location);
                     matrix[0][0] = location[0];
                     matrix[1][0] = location[1];
@@ -422,15 +422,15 @@ public class FourPlayActivity extends Activity {
                         if (oldPosition == number) { //НОВОЕ если карта после движения оказалась на той же позиции откуда и начала свое движение, то можно сразу переносить ее на начальные коордианты (см. пункт else)
                             suitable = false;
                             //начало алгоритма
-                            if ((number >=2) && (number <=5)){
-                                int suitResult = findSuit(number);
-                                switch (suitResult) {
-                                    case 0:
-                                        Toast.makeText(FourPlayActivity.this,   "ОШИБКА", Toast.LENGTH_SHORT).show();
+                            if ((number >=2) && (number <=5)){ //алгоритм работает только с местами, касающихся мастей
+                                int suitResult = findSuit(number); //фиксируем переменную, которую нам выдает функция по месту
+                                switch (suitResult) { //рассматриваем случаи когда
+                                    case 0: //переменная равна 0
+                                        Toast.makeText(FourPlayActivity.this,   "ОШИБКА", Toast.LENGTH_SHORT).show(); //ошибка, потому что как на пустом месте может что-то быть
                                         break;
-                                    case 1:
-                                        break;
-                                    default:
+                                    case 1: //переменная равна 1
+                                        break; //ничего не делаем, ведь механизм переноса на прежнее место прописан в else
+                                    default: //переменная 2 и больше
                                         int temp3 = IndexInCardArray[SuitArray[suitResult-1]];//Запоминаем индекс нулевой карты в массиве SuitArray
                                         int temp4 = CardScreenPosition[SuitArray[suitResult-1]];
                                         CardArray[IndexInCardArray[SuitArray[suitResult-2]]].setVisibility(View.VISIBLE);

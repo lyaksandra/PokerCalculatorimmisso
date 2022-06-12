@@ -31,6 +31,7 @@ public class FourPlayActivity extends Activity {
     MyCardView[] CardArray = new MyCardView [CARD_AMOUNT];//Объекты визуальные карт, номер визуальной карты в этом массиве соотвествует значениею элемента массива в IndexInCardArray
     int[] CardScreenPosition = new int [CARD_AMOUNT];//Позиция каждой карты на экране (плюс в каждой позиции на экране, выводится та карта, номер которой в этом массиве больше)
     int[] IndexInCardArray = new int [CARD_AMOUNT];//Номер в массиве - это индекс визуальной карты в массиве CardArray, один и тот же индекс в массивах CardScreenPosition и IndexInCardArray соответствуют одной визуальной карте
+    int[] SuitArray = new int [CARD_AMOUNT]; //массив, который запоминает позиции карт одной масти в массиве IndexInCardArray
     private int oldPosition, newPosition;
 
     private boolean isFirst = true; //переменная флаг, чтобы определять массив в онТаче только единожды
@@ -56,25 +57,7 @@ public class FourPlayActivity extends Activity {
     public int[] location = new int[2];
     int[] location0 = new int[2];
     int[] location1 = new int[2];
-/*
-    int[] location2 = new int[2];
-    int[] location3 = new int[2];
-    int[] location4 = new int[2];
-    int[] location5 = new int[2];
-    int[] location6 = new int[2];
-    int[] location7 = new int[2];
-    int[] location8 = new int[2];
-    int[] location9 = new int[2];
-    int[] location10 = new int[2];
-    int[] location11 = new int[2];
-    int[] location12 = new int[2];
-    int[] location13 = new int[2];
-    int[] location14 = new int[2];
-    int[] location15 = new int[2];
-    int[] location16 = new int[2];
-    int[] location17 = new int[2];
-    int[] location18 = new int[2];
-*/
+
     //объявление переменных малевичей
     ImageView black0, black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12, black13, black14, black15, black16, black17, black18;
     ImageView white0, white1;
@@ -85,6 +68,9 @@ public class FourPlayActivity extends Activity {
         super.onCreate(savedInstanceState); // наследование функций и методов онКриэйта
         setContentView(R.layout.activity_four_play); //привязка к XML-файла к активити
         mainLayout = findViewById(R.id.four_play); // вводим новый объект, которая будет отвечать за XML файл массива
+        mainLayout.getScaleX();
+        mainLayout.getScaleY();
+        Toast.makeText(FourPlayActivity.this,  "x="+ mainLayout.getScaleX() + " y=" + mainLayout.getScaleY(), Toast.LENGTH_SHORT).show();
         CardArray[0]=findViewById(R.id.two_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[1]=findViewById(R.id.two_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[2]=findViewById(R.id.two_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
@@ -137,13 +123,6 @@ public class FourPlayActivity extends Activity {
         CardArray[49]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[50]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[51]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        /*
-        CardArray[0]=findViewById(R.id.king_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[1]=findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[2]=findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[3]=findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        CardArray[4]=findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-         */
 
         white0 = findViewById(R.id.white0);
         white1 = findViewById(R.id.white1);
@@ -167,36 +146,11 @@ public class FourPlayActivity extends Activity {
         black17 = findViewById(R.id.black17);
         black18 = findViewById(R.id.black18);
 
-        /*
-        MyCardView aceDiamonds = findViewById(R.id.ace_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        MyCardView aceClubs = findViewById(R.id.ace_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        MyCardView aceSpades = findViewById(R.id.ace_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-        MyCardView aceHearts = findViewById(R.id.ace_hearts); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
-
-        Path path = new Path(); // создаем объект (путь) типа Path
-        path.moveTo(762f, 337f); // и перемещаем его по таким координатам (взяты вторые координаты из массива)
-
-        animation = ObjectAnimator.ofFloat(aceClubs, View.X, View.Y, path); // связываем вместе объект, который нам нужно подвинуть и путь, и передвигаем их по ранее заданным координатам
-        animation.start(); // запускаем процесс передвиженя по координатам
-*/
-
         for (int index = 0; index < CARD_AMOUNT; index++) {//Цикл по всем картам на экране
          CardArray[index].setOnTouchListener(onTouchListener()); //привязываем к объекту метод, который ждет, пока на объект не нажмут
           CardArray[index].numb=index;//Устанавливаем внутри объекта карты позицию в массивах IndexInCardArray и CardScreenPosition
           IndexInCardArray[index] = index;
       }
-        /*
-        CardScreenPosition[0]=2;//Diamonds на 3 месте
-        CardArray[0].suitNumber=0;//Устанавливаем внутри объекта карты масть
-        CardScreenPosition[1]=2;//Diamonds на 3 месте
-        CardArray[1].suitNumber=0;//Устанавливаем внутри объекта карты масть
-        CardScreenPosition[2]=3;//Clubs на 4 месте
-        CardArray[2].suitNumber=1;//Устанавливаем внутри объекта карты масть
-        CardScreenPosition[3]=4;//Spades на 5 месте
-        CardArray[3].suitNumber=2;//Устанавливаем внутри объекта карты масть
-        CardScreenPosition[4]=5;//Hearts на 6 месте
-        CardArray[4].suitNumber=3;//Устанавливаем внутри объекта карты масть
-         */
 
         CardScreenPosition[0]=2;//Diamonds на 3 месте
         CardScreenPosition[4]=2;//Diamonds на 3 месте
@@ -316,6 +270,20 @@ public class FourPlayActivity extends Activity {
         super.onStart(); // наследование функций и методов онСтарта
     }
 
+    protected int findSuit (int Position) {
+        int inSuit = 0;
+        for (int i = 0; i < CARD_AMOUNT; i++) {
+            SuitArray[i] = CARD_AMOUNT + 1;
+        }
+        for (int j = 0; j < CARD_AMOUNT; j++) {
+            if (CardScreenPosition[j] == Position) {
+                SuitArray[inSuit] = j;
+                inSuit = inSuit + 1;
+            }
+        }
+        return inSuit;
+    }
+
     protected int findCardNumber(int Numb) {//Если есть карта в позиции на экране numb, то возвращает индекс этой карты в массиве IndexInCardArray и CardScreenPosition
         int arrin;
         arrin = CARD_AMOUNT + 1;
@@ -419,9 +387,6 @@ public class FourPlayActivity extends Activity {
 
                         //Toast.makeText(FourPlayActivity.this,  "x="+ x + " y=" + y, Toast.LENGTH_SHORT).show();
 
-                        //ConstraintLayout.LayoutParams lParams = (ConstraintLayout.LayoutParams) // создаю слой, по координатам которого будет двигаться объект
-                        //      view.getLayoutParams();
-
                         white0.getLocationOnScreen(location0);
                         white1.getLocationOnScreen(location1);
 
@@ -469,10 +434,36 @@ public class FourPlayActivity extends Activity {
                         }
                         //Toast.makeText(FourPlayActivity.this,   "suitable=" + suitable + " newPos=" + newPosition, Toast.LENGTH_SHORT).show();
 
-                        int oldPosition = CardScreenPosition [((MyCardView) view).numb]; //НОВОЕ запоминаем старую позицию карты пока мы не поменяли массив в цикле for ниже
+                        oldPosition = CardScreenPosition [((MyCardView) view).numb]; //НОВОЕ запоминаем старую позицию карты пока мы не поменяли массив в цикле for ниже
                         //Toast.makeText(FourPlayActivity.this,   "oldPos " + oldPosition, Toast.LENGTH_SHORT).show();
                         if (oldPosition == number) { //НОВОЕ если карта после движения оказалась на той же позиции откуда и начала свое движение, то можно сразу переносить ее на начальные коордианты (см. пункт else)
                             suitable = false;
+                            //начало алгоритма
+                            if ((number >=2) && (number <=5)){
+                                int suitResult = findSuit(number);
+                                switch (suitResult) {
+                                    case 0:
+                                        Toast.makeText(FourPlayActivity.this,   "ОШИБКА", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case 1:
+                                        break;
+                                    default:
+                                        int temp3 = IndexInCardArray[SuitArray[suitResult-1]];//Запоминаем индекс нулевой карты в массиве SuitArray
+                                        int temp4 = CardScreenPosition[SuitArray[suitResult-1]];
+                                        for (int i = suitResult-1; i>0; i--) {
+                                                CardArray[IndexInCardArray[SuitArray[i-1]]].numb = SuitArray[i];
+                                                CardScreenPosition[SuitArray[i]] = CardScreenPosition[SuitArray[i-1]] ;//Сдвигаем в массиве позиций карт на одно место левее
+                                                IndexInCardArray[SuitArray[i]] = IndexInCardArray[SuitArray[i-1]];//Сдвигаем в массиве индексов позиций карт на одно место левее
+                                        }
+                                        IndexInCardArray[SuitArray[0]] = temp3;//Вставляем в массив индексов карт на экране позицию передвигаемой карты на последнее место
+                                        CardScreenPosition[SuitArray[0]] = temp4;//Вставляем в массив позиций карт на экране в последнее место новую позицию передвигаемой карты
+                                        CardArray[temp3].numb = SuitArray[0];//В объекте MyCardView сохраняем информацию, что ее индекс в массиве позиций карт и в массиве индексов явлется CARD_AMOUNT-1 (карта стала последней)
+                                        view.setVisibility(View.INVISIBLE);
+                                        CardArray[SuitArray[suitResult-2]].setVisibility(View.VISIBLE);
+                                        break;
+                                }
+                            }
+                            //конец алгоритма
                         }
                         //Toast.makeText(FourPlayActivity.this,   "oldPos=" + oldPosition + " oldPosRem=" + oldPosRemember + " number=" + number, Toast.LENGTH_SHORT).show();
                         if (suitable == true) { //теперь пытаюсь делать переставление объекта после отжатия клавишы, когда флаг тру, но не получается. объект просто двигается по экрану
@@ -482,6 +473,7 @@ public class FourPlayActivity extends Activity {
                                 CardArray[IndexInCardArray[newPosition]].setVisibility(View.INVISIBLE);//Предыдущая карта становится невидимой
                                 int temp2 = IndexInCardArray[((MyCardView) view).numb];//Запоминаем индекс переносимой карты в массиве CardArray
                                 for (int i2 = ((MyCardView) view).numb; i2 < CARD_AMOUNT - 1; i2++) {//Цикл по всем картам, кторые находятся в массиве карт после передвигаемой
+                                    CardArray[IndexInCardArray[i2+1]].numb = i2;
                                     CardScreenPosition[i2] = CardScreenPosition[i2+1] ;//Сдвигаем в массиве позиций карт на одно место левее
                                     IndexInCardArray[i2] = IndexInCardArray[i2+1];//Сдвигаем в массиве индексов позиций карт на одно место левее
                                 }
@@ -511,8 +503,8 @@ public class FourPlayActivity extends Activity {
                             animation.start();
 
                             view.getLocationOnScreen(location);
-                            Toast.makeText(FourPlayActivity.this,  "x" + location[0] + "y" + location[1] + " number=" + number, Toast.LENGTH_SHORT).show();
-                        } // ВАЖНО этой скобки в коде не было поэтому посмотреть папин код и понять где скобка
+                            //Toast.makeText(FourPlayActivity.this,  "x" + location[0] + "y" + location[1] + " number=" + number, Toast.LENGTH_SHORT).show();
+                        }
 
                         //Toast.makeText(FourPlayActivity.this,  "kuku", Toast.LENGTH_SHORT).show();
                         else { //и когда флаг фолз. не работает ни то ни другое

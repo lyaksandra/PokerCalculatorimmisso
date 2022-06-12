@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokerCalculatorimmisso">
         <activity
-            android:name=".FourPlayActivity"
-            android:screenOrientation="landscape"
+            android:name=".ResultActivity"
             android:exported="false" />
         <activity
+            android:name=".FourPlayActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

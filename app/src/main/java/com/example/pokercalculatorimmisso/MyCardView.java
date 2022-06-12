@@ -10,6 +10,7 @@ public class MyCardView extends androidx.appcompat.widget.AppCompatImageView {
 
     int numb;
     int suitNumber;
+    int nomination;
 
     public MyCardView(@NonNull Context context) {
         super(context);

@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pokercalculatorimmisso.adapter.CardAdapter;
@@ -58,6 +60,7 @@ public class FourPlayActivity extends Activity {
     //объявление переменных малевичей
     ImageView black0, black1, black2, black3, black4, black5, black6, black7, black8, black9, black10, black11, black12, black13, black14, black15, black16, black17, black18;
     ImageView white0, white1;
+    TextView countResultFirst, countResultSecond;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -65,8 +68,8 @@ public class FourPlayActivity extends Activity {
         super.onCreate(savedInstanceState); // наследование функций и методов онКриэйта
         setContentView(R.layout.activity_four_play); //привязка к XML-файла к активити
         mainLayout = findViewById(R.id.four_play); // вводим новый объект, которая будет отвечать за XML файл массива
-        mainLayout.getScaleX();
-        mainLayout.getScaleY();
+        countResultFirst = findViewById(R.id.count_result_first);
+        countResultSecond = findViewById(R.id.count_result_second);
         CardArray[0]=findViewById(R.id.two_diamonds); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[1]=findViewById(R.id.two_clubs); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
         CardArray[2]=findViewById(R.id.two_spades); // объект типа MyCardView, который привязан по ID с объектом из XML-файла
@@ -259,7 +262,95 @@ public class FourPlayActivity extends Activity {
         CardArray[43].suitNumber=3;//Устанавливаем внутри объекта карты масть
         CardArray[47].suitNumber=3;//Устанавливаем внутри объекта карты масть
         CardArray[51].suitNumber=3;//Устанавливаем внутри объекта карты масть
+
+        CardArray[0].nomination = 2;
+        CardArray[1].nomination = 2;
+        CardArray[2].nomination = 2;
+        CardArray[3].nomination = 2;
+        CardArray[4].nomination = 3;
+        CardArray[5].nomination = 3;
+        CardArray[6].nomination = 3;
+        CardArray[7].nomination = 3;
+        CardArray[8].nomination = 4;
+        CardArray[9].nomination = 4;
+        CardArray[10].nomination = 4;
+        CardArray[11].nomination = 4;
+        CardArray[12].nomination = 5;
+        CardArray[13].nomination = 5;
+        CardArray[14].nomination = 5;
+        CardArray[15].nomination = 5;
+        CardArray[16].nomination = 6;
+        CardArray[17].nomination = 6;
+        CardArray[18].nomination = 6;
+        CardArray[19].nomination = 6;
+        CardArray[20].nomination = 7;
+        CardArray[21].nomination = 7;
+        CardArray[22].nomination = 7;
+        CardArray[23].nomination = 7;
+        CardArray[24].nomination = 8;
+        CardArray[25].nomination = 8;
+        CardArray[26].nomination = 8;
+        CardArray[27].nomination = 8;
+        CardArray[28].nomination = 9;
+        CardArray[29].nomination = 9;
+        CardArray[30].nomination = 9;
+        CardArray[31].nomination = 9;
+        CardArray[32].nomination = 10;
+        CardArray[33].nomination = 10;
+        CardArray[34].nomination = 10;
+        CardArray[35].nomination = 10;
+        CardArray[36].nomination = 11;//J
+        CardArray[37].nomination = 11;//J
+        CardArray[38].nomination = 11;//J
+        CardArray[39].nomination = 11;//J
+        CardArray[40].nomination = 12;//Q
+        CardArray[41].nomination = 12;//Q
+        CardArray[42].nomination = 12;//Q
+        CardArray[43].nomination = 12;//Q
+        CardArray[44].nomination = 13;//K
+        CardArray[45].nomination = 13;//K
+        CardArray[46].nomination = 13;//K
+        CardArray[47].nomination = 13;//K
+        CardArray[48].nomination = 14;//A
+        CardArray[49].nomination = 14;//A
+        CardArray[50].nomination = 14;//A
+        CardArray[51].nomination = 14;//A
+
+        Button countButton;
+        countButton = findViewById(R.id.button_count);
+        countButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int index0 = findCardNumber(0);
+                int index1 = findCardNumber(1);
+                int index8 = findCardNumber(8);
+                int index9 = findCardNumber(9);
+                int index10 = findCardNumber(10);
+                int index11 = findCardNumber(11);
+                int index12 = findCardNumber(12);
+                if ((index0<CARD_AMOUNT+1) && (index1<CARD_AMOUNT+1) && (index8 == CARD_AMOUNT+1) && (index9 == CARD_AMOUNT+1) && (index10 == CARD_AMOUNT+1) && (index11 == CARD_AMOUNT+1) && (index12 == CARD_AMOUNT+1)){
+                    if (CardArray[index0].nomination == CardArray[index1].nomination) {
+                        countResultFirst.setText("Вірогідність отримати: сет - 10.5%");
+                        countResultSecond.setText("фулл-хауз - 0.73%, " + "каре - 0.24%");
+                    } else if (CardArray[(findCardNumber(0))].suitNumber == CardArray[(findCardNumber(1))].suitNumber) {
+                        countResultFirst.setText("Вірогідність отримати: флеш - 0.842%");
+                        countResultSecond.setText("флеш-дро - 10.9%");
+                    } else {
+                        countResultFirst.setText("Вірогідність отримати: пара - 32.4%");
+                        countResultSecond.setText("дві пари - 2%");
+                    }
+                } else {
+                    if ((index0==CARD_AMOUNT+1) || (index1==CARD_AMOUNT+1)) {
+                        countResultFirst.setText("Замало карт для розрахунку");
+                    }
+                    if ((index8 < CARD_AMOUNT+1) || (index9 < CARD_AMOUNT+1) || (index10 < CARD_AMOUNT+1) || (index11 < CARD_AMOUNT+1) || (index12 < CARD_AMOUNT+1)){
+                        countResultFirst.setText("Буде в наступному оновленні");
+                    }
+                }
+            }
+        });
     }
+
 
     @Override
     protected void onStart() { // жизненный цикл онСтарт

@@ -450,6 +450,21 @@ public class FourPlayActivity extends Activity {
                                     default:
                                         int temp3 = IndexInCardArray[SuitArray[suitResult-1]];//Запоминаем индекс нулевой карты в массиве SuitArray
                                         int temp4 = CardScreenPosition[SuitArray[suitResult-1]];
+                                        String stroka = "";
+                                        for (int m = 0; m < suitResult ; m++) {
+                                            stroka = stroka + " " + SuitArray[m];
+                                        }
+                                        Toast.makeText(FourPlayActivity.this,   "suit0=" + stroka + " temp3=" + temp3 + " temp4=" + temp4 + " result=" +suitResult, Toast.LENGTH_LONG).show();
+                                        String stroka1 = "";
+                                        String stroka2 = "";
+                                        String stroka3 = "";
+                                        for (int m = 0; m < CARD_AMOUNT ; m++) {
+                                            stroka1 = stroka1 + " " + IndexInCardArray[m];
+                                            stroka2 = stroka2 + " " + CardScreenPosition[m];
+                                            stroka3 = stroka3 + " " + CardArray[m].numb;
+                                        }
+                                        Toast.makeText(FourPlayActivity.this,   "Index=" + stroka1 + " Screen=" + stroka2 + " numb" + stroka3, Toast.LENGTH_LONG).show();
+                                        CardArray[IndexInCardArray[SuitArray[suitResult-2]]].setVisibility(View.VISIBLE);
                                         for (int i = suitResult-1; i>0; i--) {
                                                 CardArray[IndexInCardArray[SuitArray[i-1]]].numb = SuitArray[i];
                                                 CardScreenPosition[SuitArray[i]] = CardScreenPosition[SuitArray[i-1]] ;//Сдвигаем в массиве позиций карт на одно место левее
@@ -458,8 +473,19 @@ public class FourPlayActivity extends Activity {
                                         IndexInCardArray[SuitArray[0]] = temp3;//Вставляем в массив индексов карт на экране позицию передвигаемой карты на последнее место
                                         CardScreenPosition[SuitArray[0]] = temp4;//Вставляем в массив позиций карт на экране в последнее место новую позицию передвигаемой карты
                                         CardArray[temp3].numb = SuitArray[0];//В объекте MyCardView сохраняем информацию, что ее индекс в массиве позиций карт и в массиве индексов явлется CARD_AMOUNT-1 (карта стала последней)
-                                        view.setVisibility(View.INVISIBLE);
-                                        CardArray[SuitArray[suitResult-2]].setVisibility(View.VISIBLE);
+                                        view.setVisibility(View.INVISIBLE);//CardArray[temp3].setVisibility(View.INVISIBLE);
+                                        //CardArray[IndexInCardArray[SuitArray[suitResult-2]]].setVisibility(View.VISIBLE);
+
+                                        String stroka4 = "";
+                                        String stroka5 = "";
+                                        String stroka6 = "";
+                                        for (int m = 0; m < CARD_AMOUNT ; m++) {
+                                            stroka4 = stroka4 + " " + IndexInCardArray[m];
+                                            stroka5 = stroka5 + " " + CardScreenPosition[m];
+                                            stroka6 = stroka6 + " " + CardArray[m].numb;
+                                        }
+                                        Toast.makeText(FourPlayActivity.this,   "Index=" + stroka4 + " Screen=" + stroka5 + " numb" + stroka6, Toast.LENGTH_LONG).show();
+
                                         break;
                                 }
                             }
